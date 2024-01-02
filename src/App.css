@@ -1,38 +1,121 @@
+#root,
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  /* display: flex;
+  flex-direction: column; */
+  /* justify-content: center; */
+}
+
 .App {
+  font-family: sans-serif;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.header {
+  padding: 8px;
+  display: flex;
+  background-color: #ddd;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header * {
+  margin: 8px;
+}
+
+.header button {
+  align-self: flex-end;
+  font-size: 42px;
+}
+
+.header .points {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.header .status-true {
+  font-size: 32px;
+  font-weight: bold;
+  color: green;
+}
+
+.header .status-false {
+  font-size: 32px;
+  font-weight: bold;
+  color: red;
+}
+
+.addition {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 300px;
+  /* border: 1px solid #000; */
+}
+
+.addition button {
+  font-size: 32px;
+  padding: 16px;
+  margin: 40px 8px 8px 8px;
+  width: 100%;
+  background-color: green;
   color: white;
+  font-weight: bolder;
 }
 
-.App-link {
-  color: #61dafb;
+.addition button:hover {
+  background-color: greenyellow;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.digit {
+  font-size: 60px;
+  padding: 24px;
+  width: 30px;
+  /* border: 1px solid #000; */
+}
+
+.number {
+  padding: 8px;
+}
+
+.symbol {
+  font-size: 72px;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.divider {
+  width: 100%;
+  height: 5px;
+  background-color: black;
+}
+
+.input {
+  width: 75px;
+  text-align: center;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.input:last-child {
+  margin-right: 8px;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
