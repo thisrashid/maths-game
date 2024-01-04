@@ -1,12 +1,12 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-export default function Input({ value, onChange }) {
-    const [digit, setDigit] = useState(value);
+export default function Input({ value, onChange, setValue }) {
+    // const [digit, setDigit] = useState(value);
   const changeHandler = (e) => {
     const num = String(e.target.value);
 
     if(num.length === 0 || (num.length === 1 && num.match(/^[\d]+$/))) {
-        setDigit(num);
+        setValue(num);
         onChange(num);
     }
   }
@@ -15,7 +15,7 @@ export default function Input({ value, onChange }) {
         <input
           className="input"
           maxLength={1}
-          value={digit}
+          value={value}
           onChange={changeHandler}
         />
   );

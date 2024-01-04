@@ -1,35 +1,37 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import "./App.css";
 import Addition from "./Addition";
 import Header from "./Header";
-
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
-}
-
-function getNumber() {
-  return getRandomInt(10, 99);
-}
+import { addNext, addSubmit, useAppContext } from "./store";
 
 export default function App() {
-  const [points, setPoints] = useState(0);
-  const [total, setTotal] = useState(0);
-  const [number1, setNumber1] = useState(() => getNumber());
-  const [number2, setNumber2] = useState(() => getNumber());
-  const [status, setStatus] = useState(true);
-  const onSubmit = (result) => {
-    setTotal((prev) => prev + 1);
-    setPoints((prev) => (result ? prev + 1 : prev));
-    setNumber1(getNumber());
-    setNumber2(getNumber());
-    setStatus(result);
+  const {
+    state: { addition },
+    dispatch,
+  } = useAppContext();
+  const isInited = useRef(false);
+  const onSubmit = (answer) => {
+    dispatch(addSubmit(answer));
   };
+
+  const { number1, number2 } = addition.length
+    ? addition[addition.length - 1]
+    : {};
+
+  useEffect(() => {
+    if (!isInited.current) {
+      dispatch(addNext());
+      isInited.current = true;
+    }
+  }, [dispatch, isInited]);
+
+  if (!number1 || !number2) {
+    return null;
+  }
 
   return (
     <div className="App">
-      <Header points={points} total={total} status={status}/>
+      <Header />
       <Addition number1={number1} number2={number2} onSubmit={onSubmit} />
     </div>
   );

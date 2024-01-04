@@ -1,11 +1,26 @@
-export default function Header({ points, total, status }) {
-    return (
-      <div className="header">
-        <span className="points">
-          Points: {points} / {total}
+import { addNext, useAppContext } from "./store";
+
+export default function Header() {
+  const {
+    state: { addition, total, points },
+    dispatch,
+  } = useAppContext();
+  const status = addition[addition.length - 1].result;
+  const handleNext = () => {
+    dispatch(addNext());
+  };
+
+  return (
+    <div className="header">
+      <span className="points">
+        Points: {points} / {total}
+      </span>
+      {status !== undefined && (
+        <span className={`status-${status}`}>
+          {total > 0 ? (status ? "Correct" : "Wrong") : ""}
         </span>
-        <span className={`status-${status}`}>{total > 0 ? status ? "Correct" : "Wrong" : ""}</span>
-      </div>
-    );
-  }
-  
+      )}
+      <button onClick={handleNext}>Next</button>
+    </div>
+  );
+}
