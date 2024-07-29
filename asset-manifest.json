@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.fa15a98e.css",
-    "main.js": "/static/js/main.393e5ed5.js",
-    "static/js/453.f3791ead.chunk.js": "/static/js/453.f3791ead.chunk.js",
-    "index.html": "/index.html",
-    "main.fa15a98e.css.map": "/static/css/main.fa15a98e.css.map",
-    "main.393e5ed5.js.map": "/static/js/main.393e5ed5.js.map",
-    "453.f3791ead.chunk.js.map": "/static/js/453.f3791ead.chunk.js.map"
+    "main.css": "/maths-game/static/css/main.fa15a98e.css",
+    "main.js": "/maths-game/static/js/main.25f74658.js",
+    "static/js/453.f3791ead.chunk.js": "/maths-game/static/js/453.f3791ead.chunk.js",
+    "index.html": "/maths-game/index.html",
+    "main.fa15a98e.css.map": "/maths-game/static/css/main.fa15a98e.css.map",
+    "main.25f74658.js.map": "/maths-game/static/js/main.25f74658.js.map",
+    "453.f3791ead.chunk.js.map": "/maths-game/static/js/453.f3791ead.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fa15a98e.css",
-    "static/js/main.393e5ed5.js"
+    "static/js/main.25f74658.js"
   ]
 }
