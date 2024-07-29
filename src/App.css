@@ -33,11 +33,6 @@ body {
   margin: 8px;
 }
 
-.header button {
-  align-self: flex-end;
-  font-size: 42px;
-}
-
 .header .points {
   font-size: 32px;
   font-weight: bold;
@@ -55,29 +50,6 @@ body {
   color: red;
 }
 
-.addition {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  max-width: 300px;
-  /* border: 1px solid #000; */
-}
-
-.addition button {
-  font-size: 32px;
-  padding: 16px;
-  margin: 40px 8px 8px 8px;
-  width: 100%;
-  background-color: green;
-  color: white;
-  font-weight: bolder;
-}
-
-.addition button:hover {
-  background-color: greenyellow;
-  cursor: pointer;
-}
-
 .digit {
   font-size: 60px;
   padding: 24px;
@@ -87,20 +59,6 @@ body {
 
 .number {
   padding: 8px;
-}
-
-.symbol {
-  font-size: 72px;
-}
-.row {
-  display: flex;
-  flex-direction: row;
-}
-
-.divider {
-  width: 100%;
-  height: 5px;
-  background-color: black;
 }
 
 .input {

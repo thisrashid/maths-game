@@ -1,9 +1,9 @@
-function getRandomInt(min, max) {
+export function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
 }
 
 export function getNumber() {
-  return getRandomInt(10, 99);
+  return getRandomInt(10, 1000);
 }

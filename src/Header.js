@@ -1,13 +1,30 @@
-import { addNext, useAppContext } from "./store";
+import { Button, makeStyles } from "@fluentui/react-components";
+import { addNext, multiplyNext, substractNext, useAppContext } from "./store";
 
-export default function Header() {
-  const {
-    state: { addition, total, points },
-    dispatch,
-  } = useAppContext();
-  const status = addition[addition.length - 1].result;
+const useStyles = makeStyles({
+  next: {
+    display: "flex",
+    minWidth: "min-content",
+    fontSize: "1.5rem",
+    padding: "25px",
+  },
+});
+
+export default function Header({ onNext, operation }) {
+  const { state, dispatch } = useAppContext();
+  const { total, points } = state;
+  const stateKey = state[operation];
+  const styles = useStyles();
+  const status = stateKey[stateKey.length - 1].result;
   const handleNext = () => {
-    dispatch(addNext());
+    onNext();
+    if (operation === "addition") {
+      dispatch(addNext());
+    } else if (operation === "subtraction") {
+      dispatch(substractNext());
+    } else if (operation === "multiplication") {
+      dispatch(multiplyNext());
+    }
   };
 
   return (
@@ -20,7 +37,9 @@ export default function Header() {
           {total > 0 ? (status ? "Correct" : "Wrong") : ""}
         </span>
       )}
-      <button onClick={handleNext}>Next</button>
+      <Button className={styles.next} onClick={handleNext}>
+        Next
+      </Button>
     </div>
   );
 }

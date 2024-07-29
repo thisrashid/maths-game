@@ -1,18 +1,44 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { makeStyles, Tab, TabList } from "@fluentui/react-components";
 import "./App.css";
-import Addition from "./Addition";
-import Header from "./Header";
-import { addNext, addSubmit, useAppContext } from "./store";
+import { addNext, multiplyNext, substractNext, useAppContext } from "./store";
+import OperationContainer from "./components/operation/OperationContainer";
+
+const useStyles = makeStyles({
+  root: {
+    alignItems: "flex-start",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    padding: "10px 20px",
+    rowGap: "20px",
+    alignSelf: "flex-start",
+  },
+  card: {
+    width: "100%",
+    maxWidth: "100%",
+    height: "fit-content",
+    alignItems: "center",
+  },
+  cardHeader: {
+    width: "100%",
+  },
+});
+
+const SYMBOL = {
+  addition: "+",
+  subtraction: "-",
+  multiplication: "x",
+};
 
 export default function App() {
   const {
     state: { addition },
     dispatch,
   } = useAppContext();
+  const styles = useStyles();
+  const [selectedTab, setSelectedTab] = useState("addition");
   const isInited = useRef(false);
-  const onSubmit = (answer) => {
-    dispatch(addSubmit(answer));
-  };
 
   const { number1, number2 } = addition.length
     ? addition[addition.length - 1]
@@ -21,6 +47,8 @@ export default function App() {
   useEffect(() => {
     if (!isInited.current) {
       dispatch(addNext());
+      dispatch(substractNext());
+      dispatch(multiplyNext());
       isInited.current = true;
     }
   }, [dispatch, isInited]);
@@ -31,8 +59,22 @@ export default function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Addition number1={number1} number2={number2} onSubmit={onSubmit} />
+      <div className={styles.root}>
+        <TabList
+          selectedValue={selectedTab}
+          onTabSelect={(_event, options) => {
+            setSelectedTab(options.value);
+          }}
+        >
+          <Tab value="addition">Addition</Tab>
+          <Tab value="subtraction">Susbtraction</Tab>
+          <Tab value="multiplication">Multiplication</Tab>
+        </TabList>
+      </div>
+      <OperationContainer
+        symbol={SYMBOL[selectedTab]}
+        operation={selectedTab}
+      />
     </div>
   );
 }

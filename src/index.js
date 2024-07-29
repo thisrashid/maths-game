@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { FluentProvider, webLightTheme } from "@fluentui/react-components";
 import "./index.css";
 import App from "./App";
 import { AppStore } from "./store";
@@ -8,9 +9,11 @@ import reportWebVitals from "./reportWebVitals";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AppStore>
-      <App />
-    </AppStore>
+    <FluentProvider theme={webLightTheme}>
+      <AppStore>
+        <App />
+      </AppStore>
+    </FluentProvider>
   </React.StrictMode>
 );
 
