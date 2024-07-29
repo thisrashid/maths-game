@@ -2,6 +2,7 @@
   "name": "maths-game",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/maths-game",
   "dependencies": {
     "@fluentui/react-components": "^9.54.5",
     "@testing-library/jest-dom": "^5.17.0",
