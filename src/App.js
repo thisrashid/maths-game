@@ -66,9 +66,15 @@ export default function App() {
             setSelectedTab(options.value);
           }}
         >
-          <Tab value="addition">Addition</Tab>
-          <Tab value="subtraction">Susbtraction</Tab>
-          <Tab value="multiplication">Multiplication</Tab>
+          <Tab key="addition" value="addition">
+            Addition
+          </Tab>
+          <Tab key="subtraction" value="subtraction">
+            Susbtraction
+          </Tab>
+          <Tab key="multiplication" value="multiplication">
+            Multiplication
+          </Tab>
         </TabList>
       </div>
       <OperationContainer
